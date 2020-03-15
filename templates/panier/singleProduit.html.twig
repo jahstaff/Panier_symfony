@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PanierController!{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="col">
+        <div class="row">
+            <h1>{{produit.nom}}</h1>
+        </div>
+        <div class="row">
+            <img src="{{ asset('upload/images/' ~ produit.photo)}}" class="img-thumbnail" style="width:300px;"
+                alt="{{produit.nom}}"></td>
+        </div>
+        <div class="row">
+            Quantité :{{produit.quantite}}
+        </div>
+        <div class="row">
+            Prix :{{produit.prix}}€
+        </div>
+        <div class="row">
+            {{form_start(formPanier)}}
+            {{form_end(formPanier)}}
+        </div>
+    </div>
+</div>
+{% endblock %}

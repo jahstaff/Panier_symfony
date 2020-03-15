@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PanierController!{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    <div class="row">
+        <H1>Contenu du panier</H1>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Quantité</th>
+                    <th scope="col">Montant</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% set montantTotal = 0 %}
+                {% for panier in paniers %}
+                {% if panier.etat == false %}
+                <tr>
+                    <td>{{panier.produit.nom}}</td>
+                    <td>{{panier.quantite}}</td>
+                    {% set montant = ((panier.quantite)*(panier.produit.prix)) %}
+                    {% set montantTotal = montantTotal + montant %}
+                    <td>{{montant}}€</td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button class="btn btn-primary">Payer {{montantTotal}}€</button>
+</div>
+</div>
+{% endblock %}
